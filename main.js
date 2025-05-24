@@ -1,30 +1,17 @@
-import App from "./App";
+/**
+ * 入口配置
+ */
 
-// #ifndef VUE3
-import Vue from "vue";
-import store from "./store";
-import "./uni.promisify.adaptor";
-Vue.config.productionTip = false;
-App.mpType = "app";
-const app = new Vue({
-  ...App,
-});
-// app.use(store);
-app.provide('store', store);
-
-app.$mount();
-// #endif
-
-// #ifdef VUE3
-import { createSSRApp } from "vue";
-import store from "./store";
-
+import { createSSRApp } from 'vue'
+import App from './App'
+import Pinia from '@/store'
+import VKuview from '@/uni_modules/vk-uview-ui'
 export function createApp() {
-  const app = createSSRApp(App);
-  // app.use(store);
-  app.provide('store', store);
-  return {
-    app,
-  };
+	const app = createSSRApp(App)
+app.use(Pinia)
+	app.use(VKuview)
+return {
+	app,
+Pinia
+	}
 }
-// #endif

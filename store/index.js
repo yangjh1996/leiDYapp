@@ -1,20 +1,9 @@
-import { createStore } from "vuex";
-const store = createStore({
-  state() {
-    return {
-      userinfo: null,
-      statusHeight: 0,
-    };
-  },
-  mutations: {
-    updateUserinfo(state, payload) {
-      state.userinfo = payload;
-    },
-    updateStatusHeight(state, payload) {
-      state.statusHeight = payload;
-    },
-  },
-  actions: {},
-});
-
-export default store;
+/**
+ * uniapp状态管理Pinia
+ * @author yxy
+ */
+import { createPinia } from 'pinia'
+import { createUnistorage } from '@/uni_modules/pinia-plugin-unistorage'
+const Pinia = createPinia()
+Pinia.use(createUnistorage())
+export default Pinia
